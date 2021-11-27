@@ -1,6 +1,8 @@
 import 'package:e_commerce_app/screen/Home/filter/filter_screen.dart';
 import 'package:e_commerce_app/screen/Home/home_screen.dart';
 import 'package:e_commerce_app/screen/profile/myOrder/my_order_screen.dart';
+import 'package:e_commerce_app/screen/profile/payment/payment_screen.dart';
+import 'package:e_commerce_app/screen/profile/settings/setting_screen.dart';
 import 'package:e_commerce_app/screen/profile/shippingAddress/shipping_address.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -11,8 +13,8 @@ class ProfileScreen extends StatelessWidget {
   List<Map> list = [
     {"title":"My orders","subtitle":"Already have 12 orders","onTap":MyOrderScreen()},
     {"title":"Shipping addresses","subtitle":"3 addresses","onTap":ShippingAddress()},
-    {"title":"Payment methods","subtitle":"Visa  **34","onTap":HomeScreen()},
-    {"title":"Settings","subtitle":"Notifications, password","onTap":HomeScreen()},
+    {"title":"Payment methods","subtitle":"Visa  **34","onTap":PaymentScreen()},
+    {"title":"Settings","subtitle":"Notifications, password","onTap":Settings()},
   ];
   @override
   Widget build(BuildContext context) {

@@ -98,8 +98,8 @@ class LaptopScreen extends StatelessWidget {
                     ),
                     itemCount: images.length,
                     itemBuilder: (context, index) => Container(
-                      height: Get.height/4.92,
-                      width:Get.width/2.45,
+                      height: 150,
+                      width:160,
                       child: Stack(
                         children: [
                           InkWell(
@@ -108,7 +108,7 @@ class LaptopScreen extends StatelessWidget {
                             },
                             child: Container(
                               alignment: Alignment.center,
-                              height: Get.height/4.92,
+                              height: 150,
                               width: double.infinity,
                               child: Image.asset(images[index]["image"]),
                               decoration: BoxDecoration(
@@ -122,15 +122,15 @@ class LaptopScreen extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            top: Get.height/4.61,
+                            top: 160,
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
                                   children: [
-                                    SizedBox(width: Get.width/39.27,),
+                                    SizedBox(width: 10,),
                                     Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: Get.height/46.13),),
-                                    SizedBox(width: Get.width/19.64,),
+                                    SizedBox(width: 10,),
                                     Obx(()=> InkWell(
                                       onTap: (){
                                         homeController.favourite3[index] = !homeController.favourite3[index];
@@ -141,9 +141,9 @@ class LaptopScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height:Get.height/92.27,),
+                                SizedBox(height:10,),
                                 Padding(
-                                  padding:  EdgeInsets.only(left: Get.width/39.27),
+                                  padding:  EdgeInsets.only(left: 10),
                                   child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize: Get.height/43.42),),
                                 ),
                               ],

@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/screen/profile/shippingAddress/add_address_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:flutter/material.dart';
@@ -41,9 +42,9 @@ class ShippingAddress extends StatelessWidget {
                                 Expanded(
                                   child: Column(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
+                                    MainAxisAlignment.spaceEvenly,
                                     crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Priscekila",
@@ -60,7 +61,13 @@ class ShippingAddress extends StatelessWidget {
                                             fontSize: 14),
                                         maxLines: 2,
                                       ),
-                                      Text("+99 1234567890")
+                                      Text(
+                                        "+99 1234567890",
+                                        style: TextStyle(
+                                            color: blackLight,
+                                            fontFamily: "SegoeRegular",
+                                            fontSize: 14),
+                                      )
                                     ],
                                   ),
                                 ),
@@ -68,9 +75,12 @@ class ShippingAddress extends StatelessWidget {
                                     alignment: Alignment.topRight,
                                     child: Padding(
                                       padding:  EdgeInsets.only(top: 10.0),
-                                      child: Icon(
-                                        Icons.more_vert,
-                                        color: grayDark,
+                                      child: InkWell(
+                                        onTap: (){},
+                                        child: Icon(
+                                          Icons.more_vert,
+                                          color: grayDark,
+                                        ),
                                       ),
                                     ))
                               ],
@@ -87,7 +97,21 @@ class ShippingAddress extends StatelessWidget {
                               ]),
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(height: Get.height/6.15,),
+                    MaterialButton(
+                      height: Get.height/14.76,
+                      minWidth: Get.width/1.31,
+                      onPressed: (){
+                        print("Add Address");
+                        Get.to(()=>AddAddress());
+                      },
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50)
+                      ),
+                      color: appColor,
+                      child: Text("Add Address",style: TextStyle(color: white,fontFamily: "SegoeBold",fontSize: 16),),
+                    ),
                   ],
                 ),
               ),

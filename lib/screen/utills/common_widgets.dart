@@ -6,10 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-Widget textField({String hintText,
-  String preFixImage,
-  TextInputType type,
-  String suffixImage}) {
+Widget textField(
+    {String hintText,
+    String preFixImage,
+    TextInputType type,
+    String suffixImage}) {
   return TextField(
     keyboardType: type,
     cursorColor: textColorBlack,
@@ -27,35 +28,31 @@ Widget textField({String hintText,
         child: SvgPicture.asset(suffixImage),
       ),
       hintText: hintText,
-      hintStyle: TextStyle(
-          color: gray, fontFamily: "SegoeRegular", fontSize: 16),
+      hintStyle:
+          TextStyle(color: gray, fontFamily: "SegoeRegular", fontSize: 16),
       enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: whiteLight)
-      ),
+          borderSide: BorderSide(color: whiteLight)),
       focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: whiteLight)
-      ),
+          borderSide: BorderSide(color: whiteLight)),
       errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: whiteLight)
-      ),
+          borderSide: BorderSide(color: whiteLight)),
       focusedErrorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: whiteLight)
-      ),
+          borderSide: BorderSide(color: whiteLight)),
       fillColor: whiteLight,
       filled: true,
-
+      isDense: true
     ),
   );
 }
 
 class MyBehavior extends ScrollBehavior {
   @override
-  Widget buildViewportChrome(BuildContext context, Widget child,
-      AxisDirection axisDirection) {
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
     return child;
   }
 }
@@ -72,41 +69,45 @@ class BottomNavigationElement {
   });
 }
 
-Widget homeCircleAvatar(onTap, image, text) =>
-    Column(
+Widget homeCircleAvatar(onTap, image, text) => Column(
       children: [
         InkWell(
           onTap: onTap,
           child: CircleAvatar(
             radius: 35,
             backgroundColor: grayLight1,
-            child: SvgPicture.asset(image, height: 25, width: 25,),
+            child: SvgPicture.asset(
+              image,
+              height: 25,
+              width: 25,
+            ),
           ),
         ),
-        SizedBox(height: 5,),
-        Text(text, style: TextStyle(
-            fontSize: 16, fontFamily: "SegoeRegular", color: appColor),)
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+              fontSize: 16, fontFamily: "SegoeRegular", color: appColor),
+        )
       ],
     );
 
-Widget otpContainer() =>
-    Container(
+Widget otpContainer() => Container(
       height: Get.height / 10.86,
       width: Get.width / 5.78,
       child: Column(
         children: [
           TextField(
             cursorColor: textColorBlack,
-            style: TextStyle(
-                fontSize: 20,
-                color: textColorBlack),
+            style: TextStyle(fontSize: 20, color: textColorBlack),
             keyboardType: TextInputType.number,
             maxLength: 1,
             decoration: InputDecoration(
                 border: InputBorder.none,
                 counterText: '',
-                contentPadding: EdgeInsets.only(top: 15)
-            ),
+                contentPadding: EdgeInsets.only(top: 15)),
             textAlign: TextAlign.center,
           ),
           Padding(
@@ -119,20 +120,20 @@ Widget otpContainer() =>
         ],
       ),
       decoration: BoxDecoration(
-          color: whiteLight,
-          borderRadius: BorderRadius.circular(20)
-      ),
+          color: whiteLight, borderRadius: BorderRadius.circular(20)),
     );
 
-
-Widget searchBar(onTap,onTap2) =>
-    Column(
+Widget searchBar(onTap, onTap2) => Column(
       children: [
-        SizedBox(height: Get.height / 36.909,),
+        SizedBox(
+          height: Get.height / 36.909,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(width: Get.width / 78.54,),
+            SizedBox(
+              width: Get.width / 78.54,
+            ),
             Container(
               height: Get.height / 12.03,
               width: Get.width / 1.57,
@@ -155,9 +156,7 @@ Widget searchBar(onTap,onTap2) =>
                   ),
                   hintText: "Search Product",
                   hintStyle: TextStyle(
-                      color: gray,
-                      fontFamily: "SegoeRegular",
-                      fontSize: 16),
+                      color: gray, fontFamily: "SegoeRegular", fontSize: 16),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(50),
                       borderSide: BorderSide(color: appColor)),
@@ -175,101 +174,154 @@ Widget searchBar(onTap,onTap2) =>
                 ),
               ),
             ),
-            SizedBox(width: Get.width / 9.82,),
-            Padding(
-              padding:  EdgeInsets.only(bottom: 15.0),
-              child: SvgPicture.asset(favourite_icon, color: appColor,
-                height: Get.height / 24.61,
-                width: Get.width / 13.09,),
+            SizedBox(
+              width: Get.width / 9.82,
             ),
-            SizedBox(width: Get.width / 39.27,),
             Padding(
-              padding:  EdgeInsets.only(bottom: 13.0),
-              child: SvgPicture.asset(notification, height: Get.height / 21.09,
-                width: Get.width / 11.22,),
+              padding: EdgeInsets.only(bottom: 15.0),
+              child: SvgPicture.asset(
+                favourite_icon,
+                color: appColor,
+                height: Get.height / 24.61,
+                width: Get.width / 13.09,
+              ),
+            ),
+            SizedBox(
+              width: Get.width / 39.27,
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 13.0),
+              child: SvgPicture.asset(
+                notification,
+                height: Get.height / 21.09,
+                width: Get.width / 11.22,
+              ),
             )
           ],
         ),
         Row(
           children: [
-            SizedBox(width: Get.width / 2.45,),
+            SizedBox(
+              width: Get.width / 2.45,
+            ),
             SvgPicture.asset(filters),
-            SizedBox(width: Get.width / 39.27,),
+            SizedBox(
+              width: Get.width / 39.27,
+            ),
             InkWell(
               onTap: onTap,
-              child: Text("Filters", style: TextStyle(color: blackLight,
-                  fontFamily: "MetroPolisRegular",
-                  fontSize: 14),),
+              child: Text(
+                "Filters",
+                style: TextStyle(
+                    color: blackLight,
+                    fontFamily: "MetroPolisRegular",
+                    fontSize: 14),
+              ),
             ),
-            SizedBox(width: Get.width / 4.36,),
+            SizedBox(
+              width: Get.width / 4.36,
+            ),
             SvgPicture.asset(sort),
             InkWell(
               onTap: onTap2,
-              child: Text("Sort", style: TextStyle(color: blackLight,
-                  fontFamily: "MetroPolisRegular",
-                  fontSize: 14),),
+              child: Text(
+                "Sort",
+                style: TextStyle(
+                    color: blackLight,
+                    fontFamily: "MetroPolisRegular",
+                    fontSize: 14),
+              ),
             )
           ],
         )
       ],
     );
 
-Widget addCartContainer(image) =>
-    Container(
+Widget addCartContainer(image) => Container(
       height: 72,
       width: 72,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: white
-      ),
+      decoration:
+          BoxDecoration(borderRadius: BorderRadius.circular(10), color: white),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Image.asset(image),
       ),
     );
 
-
-Widget appbar(mainText,subText)=>Column(
-  children: [
-    SizedBox(
-      height: Get.height/24.61,
-    ),
-    Padding(
-      padding:  EdgeInsets.only(right: 15.0),
-      child: Align(
-        alignment: Alignment.topRight,
-        child: InkWell(
-          onTap: () {
-            Get.to(() => HomeScreen());
-          },
-          child: Text(
-            "Back",
-            style: TextStyle(
-              color: textColorBlack,
-              fontFamily: "SegoeRegular",
-              fontSize: 19,
-              decoration: TextDecoration.underline,
+Widget appbar(mainText, subText) => Column(
+      children: [
+        SizedBox(
+          height: Get.height / 24.61,
+        ),
+        Padding(
+          padding: EdgeInsets.only(right: 15.0),
+          child: Align(
+            alignment: Alignment.topRight,
+            child: InkWell(
+              onTap: () {
+                Get.to(() => HomeScreen());
+              },
+              child: Text(
+                "Back",
+                style: TextStyle(
+                  color: textColorBlack,
+                  fontFamily: "SegoeRegular",
+                  fontSize: 19,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
             ),
           ),
         ),
-      ),
-    ),
-    SizedBox(height: 5,),
-    Text(
-      mainText,
+        SizedBox(
+          height: 5,
+        ),
+        Text(
+          mainText,
+          style: TextStyle(
+            color: textColorBlack,
+            fontFamily: "SegoeRegular",
+            fontSize: 27,
+          ),
+        ),
+        Text(
+          subText,
+          style: TextStyle(
+            color: gray,
+            fontFamily: "SegoeRegular",
+            fontSize: 16,
+          ),
+        )
+      ],
+    );
+
+Widget addressTextField(hintText,keyboardType,[obscureText]) => TextField(
+      keyboardType: keyboardType,
+      obscureText:obscureText,
+      obscuringCharacter: "*",
+      cursorColor: textColorBlack,
       style: TextStyle(
-        color: textColorBlack,
-        fontFamily: "SegoeRegular",
-        fontSize: 27,
+          color: textColorBlack, fontFamily: "SegoeRegular", fontSize: 16),
+      decoration: InputDecoration(
+        fillColor: whiteLight,
+        filled: true,
+        isDense: true,
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(color: whiteLight)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(color: whiteLight)),
+        enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(color: whiteLight)),
+        errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20),
+            borderSide: BorderSide(color: whiteLight)),
+        contentPadding: EdgeInsets.fromLTRB(12, 15, 20, 15),
+        hintText: hintText,
+        hintStyle:
+            TextStyle(color: gray, fontFamily: "SegoeRegular", fontSize: 16),
       ),
-    ),
-    Text(
-      subText,
-      style: TextStyle(
-        color: gray,
-        fontFamily: "SegoeRegular",
-        fontSize: 16,
-      ),
-    )
-  ],
-);
+    );
+

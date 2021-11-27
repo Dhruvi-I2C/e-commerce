@@ -35,6 +35,8 @@ dependencies:
   flutter_rating_bar: ^4.0.0
   flutter_slidable: ^1.1.0
   chips_choice: ^2.0.1
+  popup_menu: ^1.0.5
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
