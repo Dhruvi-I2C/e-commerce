@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/screen/Home/filter/filter_screen.dart';
+import 'package:e_commerce_app/screen/Home/sort/sort_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -9,7 +11,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class CartScreen extends StatelessWidget {
-
   List<Map> image = [
     {"image": mobile},
     {"image": earpod},
@@ -26,7 +27,11 @@ class CartScreen extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: searchBar((){},(){}),
+            child: searchBar(() {
+              Get.off(() => FilterScreen());
+            }, () {
+              Get.off(() => SortScreen());
+            }),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 6),
@@ -47,18 +52,18 @@ class CartScreen extends StatelessWidget {
                       width: double.infinity,
                       child: Slidable(
                         key: const ValueKey(0),
-                        endActionPane:ActionPane(
+                        endActionPane: ActionPane(
                           motion: ScrollMotion(),
                           children: [
                             SlidableAction(
                               // An action can be bigger than the others.
-                              onPressed: (data){},
+                              onPressed: (data) {},
                               backgroundColor: appColor,
                               foregroundColor: Colors.white,
                               icon: Icons.favorite_border,
                             ),
                             SlidableAction(
-                              onPressed: (data){},
+                              onPressed: (data) {},
                               backgroundColor: red,
                               foregroundColor: Colors.white,
                               icon: CupertinoIcons.delete,
@@ -112,8 +117,8 @@ class CartScreen extends StatelessWidget {
                                         itemCount: 5,
                                         itemSize: 12,
                                         unratedColor: grayDark,
-                                        itemPadding:
-                                        EdgeInsets.symmetric(horizontal: 1.0),
+                                        itemPadding: EdgeInsets.symmetric(
+                                            horizontal: 1.0),
                                         itemBuilder: (context, index) =>
                                             SvgPicture.asset(star_fill),
                                         onRatingUpdate: (rating) {

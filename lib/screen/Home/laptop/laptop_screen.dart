@@ -130,7 +130,7 @@ class LaptopScreen extends StatelessWidget {
                                   children: [
                                     SizedBox(width: 10,),
                                     Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: Get.height/46.13),),
-                                    SizedBox(width: 10,),
+                                    SizedBox(width: 18,),
                                     Obx(()=> InkWell(
                                       onTap: (){
                                         homeController.favourite3[index] = !homeController.favourite3[index];

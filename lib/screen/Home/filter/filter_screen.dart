@@ -38,7 +38,7 @@ class FilterScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 25,
+                      height: Get.height/29.53,
                     ),
                     Text(
                       "Price Range",
@@ -48,14 +48,14 @@ class FilterScreen extends StatelessWidget {
                           color: blackLight),
                     ),
                     SizedBox(
-                      height: 15,
+                      height: Get.height/49.21,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          height: 50,
-                          width: 180,
+                          height: Get.height/14.76,
+                          width: Get.width/2.18,
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20.0),
@@ -72,8 +72,8 @@ class FilterScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(10)),
                         ),
                         Container(
-                          height: 50,
-                          width: 180,
+                          height:Get.height/14.76,
+                          width: Get.width/2.18,
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: const EdgeInsets.only(left: 20.0),
@@ -92,7 +92,7 @@ class FilterScreen extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: Get.height/36.91,
                     ),
                     Obx(
                       () => RangeSlider(
@@ -135,7 +135,7 @@ class FilterScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: Get.height/36.91,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 15.0),
@@ -148,7 +148,7 @@ class FilterScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: Get.height/73.82,
                     ),
                     Obx(
                       () => ChipsChoice.multiple(
@@ -192,7 +192,7 @@ class FilterScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: Get.height/36.91,
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 15.0),
@@ -206,11 +206,11 @@ class FilterScreen extends StatelessWidget {
                     ),
                     Obx(
                       () => ChipsChoice.single(
-                        value: filterController.tag.value,
-                        onChanged: (val) {
+                        wrapped: true,
+                        onChanged: (int val){
                           filterController.tag.value = val;
                         },
-                        wrapped: true,
+                        value: filterController.tag.value,
                         choiceItems: C2Choice.listFrom<int, String>(
                           source: options2,
                           value: (i, v) => i,

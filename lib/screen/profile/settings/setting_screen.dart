@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/controller/add_address_controller.dart';
 import 'package:e_commerce_app/controller/setting_controller.dart';
+import 'package:e_commerce_app/screen/auth_screen/verification_screen.dart';
 import 'package:e_commerce_app/screen/profile/profile_screen.dart';
 import 'package:e_commerce_app/screen/profile/settings/changePassword/change_password.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
@@ -203,7 +204,9 @@ class Settings extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                         children: [
                                           MaterialButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Get.to(()=>FingerprintVerifyScreen());
+                                            },
                                             height: 40,
                                             minWidth: 100,
                                             elevation: 0,
@@ -221,7 +224,9 @@ class Settings extends StatelessWidget {
                                           ),
 
                                           MaterialButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Get.back();
+                                            },
                                             height: 40,
                                             minWidth: 100,
                                             elevation: 0,

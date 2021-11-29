@@ -14,8 +14,21 @@ class DashBoardController extends GetxController{
   var tabIndex = 0.obs;
 
   void changeTabIndex(int index) {
+    // this.navigatorKeys = {
+    //   0: GlobalKey(),
+    //   1: GlobalKey(),
+    //   2: GlobalKey(),
+    //   3: GlobalKey()
+    // }.obs;
     tabIndex.value = index;
   }
+
+  var navigatorKeys = {
+    0: GlobalKey(),
+    1: GlobalKey(),
+    2: GlobalKey(),
+    3: GlobalKey()
+  }.obs;
 
   @override
   void onInit() {
@@ -26,8 +39,7 @@ class DashBoardController extends GetxController{
   void dispose() {
     super.dispose();
   }
-
-  /*int currentIndex = 0;
+ /* int currentIndex = 0;
   List<BottomNavigationElement> items = [];
 
   Widget navigationTab({GlobalKey<NavigatorState> naviKey, Widget widget}) {
@@ -220,8 +232,7 @@ class BottomNavigationElement {
     @required this.bottomBarView,
     @required this.bottomBarItem,
     @required GlobalKey<NavigatorState> navigationKey,
-  });
-}*/
-
-
+  });*/
 }
+
+

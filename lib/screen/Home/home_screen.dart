@@ -1,9 +1,11 @@
 import 'package:e_commerce_app/controller/home_controller.dart';
+import 'package:e_commerce_app/screen/Home/best_selling/best_selling_screen.dart';
 import 'package:e_commerce_app/screen/Home/category/category_screen.dart';
 import 'package:e_commerce_app/screen/Home/filter/filter_screen.dart';
 import 'package:e_commerce_app/screen/Home/laptop/laptop_screen.dart';
 import 'package:e_commerce_app/screen/Home/sort/sort_screen.dart';
 import 'package:e_commerce_app/screen/auth_screen/signIn_screen.dart';
+import 'package:e_commerce_app/screen/favourite/favourite_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -65,13 +67,13 @@ class HomeScreen extends StatelessWidget {
                               Get.to(()=>CategoryScreen());
                             },menu_icon, "Categories"),
                             homeCircleAvatar((){
-                              Get.to(()=>CategoryScreen());
+                              Get.to(()=>FavouriteScreen());
                             },star, "Favorites"),
                             homeCircleAvatar((){
                               Get.to(()=>CategoryScreen());
                             },gift_icon, "Gifts"),
                             homeCircleAvatar((){
-                              Get.to(()=>CategoryScreen());
+                              Get.to(()=>BestSellingScreen());
                             },people, "Best selling"),
                           ],
                         ),
@@ -119,10 +121,11 @@ class HomeScreen extends StatelessWidget {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Row(
+                                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             SizedBox(width: 10,),
                                             Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: Get.height/46.13),),
-                                            SizedBox(width: 10),
+                                            SizedBox(width: 18),
                                             Obx(()=> InkWell(
                                                   onTap: (){
                                                      homeController.favourite[index] = !homeController.favourite[index];

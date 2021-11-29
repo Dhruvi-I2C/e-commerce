@@ -1,11 +1,10 @@
+import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:otp_text_field/otp_text_field.dart';
-import 'package:otp_text_field/style.dart';
 
 class VerifyIdentity extends StatelessWidget {
   @override
@@ -100,6 +99,7 @@ class VerifyIdentity extends StatelessWidget {
                       height: Get.height / 14.76,
                       minWidth: Get.width / 1.31,
                       onPressed: () {
+                        Get.off(()=>DashboardScreen());
                         print("Sign IN");
                         // Get.to(VerifyIdentity());
                       },
