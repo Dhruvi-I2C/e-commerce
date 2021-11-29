@@ -55,18 +55,18 @@ class Settings extends StatelessWidget {
                               ),
                             ),
                             Obx(
-                              () => FlutterSwitch(
+                                  () => FlutterSwitch(
                                 width: 80.0,
                                 height: 40.0,
                                 activeSwitchBorder:
-                                    Border.all(color: appColor, width: 1.5),
+                                Border.all(color: appColor, width: 1.5),
                                 inactiveSwitchBorder:
-                                    Border.all(color: grayLight, width: 1.5),
+                                Border.all(color: grayLight, width: 1.5),
                                 activeColor: white,
                                 toggleColor:
-                                    settingController.switchValue.isFalse
-                                        ? grayLight
-                                        : appColor,
+                                settingController.switchValue.isFalse
+                                    ? grayLight
+                                    : appColor,
                                 toggleSize: 35.0,
                                 inactiveColor: white,
                                 value: settingController.switchValue.value,
@@ -192,6 +192,7 @@ class Settings extends StatelessWidget {
                                       ),
                                       Text(
                                         "Your order has been Placed successfully.",
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
                                             color: black,
@@ -212,7 +213,7 @@ class Settings extends StatelessWidget {
                                             elevation: 0,
                                             color: appColor,
                                             shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(40)
+                                                borderRadius: BorderRadius.circular(40)
                                             ),
                                             child: Text(
                                               "Yes",
@@ -233,7 +234,7 @@ class Settings extends StatelessWidget {
                                             color: white,
                                             shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(40),
-                                              side: BorderSide(color: whiteLight,width: 1.5)
+                                                side: BorderSide(color: whiteLight,width: 1.5)
                                             ),
                                             child: Text(
                                               "No",

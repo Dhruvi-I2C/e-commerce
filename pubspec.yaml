@@ -37,6 +37,7 @@ dependencies:
   chips_choice: ^2.0.1
   popup_menu: ^1.0.5
   flutter_switch: ^0.3.2
+  persistent_bottom_nav_bar: ^4.0.2
 
 dev_dependencies:
   flutter_test:
