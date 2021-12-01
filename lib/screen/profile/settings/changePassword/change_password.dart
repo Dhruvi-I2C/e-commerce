@@ -21,7 +21,7 @@ class ChangePassword extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: appbar("Change Password", "Change your password from here"),
+            child: appbar("Change Password", "Change your password from here",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

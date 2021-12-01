@@ -24,7 +24,7 @@ class SortScreen extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: appbar("Sort", "Extract you required Product"),
+            child: appbar("Sort", "Extract you required Product",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

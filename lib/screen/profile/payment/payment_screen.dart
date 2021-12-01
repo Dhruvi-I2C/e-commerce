@@ -18,7 +18,7 @@ class PaymentScreen extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: appbar("Payment", "Add your payment method"),
+            child: appbar("Payment", "Add your payment method",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

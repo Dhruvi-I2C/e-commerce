@@ -30,7 +30,7 @@ class AddCartScreen extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: InkWell(
                       onTap: () {
-                        Get.to(() => HomeScreen());
+                        Get.back();
                       },
                       child: Text(
                         "Back",

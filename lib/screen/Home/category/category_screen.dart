@@ -16,7 +16,7 @@ class CategoryScreen extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child:appbar("Categories", "Select your category")
+            child:appbar("Categories", "Select your category",context)
             /*Column(
               children: [
                 SizedBox(

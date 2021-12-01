@@ -29,6 +29,7 @@ class LaptopScreen extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
+          // appbar("laptop", "Select your preffered laptop with your budget",context),
           Container(
             height: Get.height,
             width: Get.width,
@@ -44,7 +45,7 @@ class LaptopScreen extends StatelessWidget {
                     alignment: Alignment.topRight,
                     child: InkWell(
                       onTap: () {
-                        Get.to(() => HomeScreen());
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                       },
                       child: Text(
                         "Back",

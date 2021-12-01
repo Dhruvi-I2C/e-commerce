@@ -30,7 +30,7 @@ class ShippingAddress extends StatelessWidget {
             width: Get.width,
             color: lightBlue,
             child: appbar("Shipping Address",
-                "Your Item Will be Deliver on below address"),
+                "Your Item Will be Deliver on below address",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

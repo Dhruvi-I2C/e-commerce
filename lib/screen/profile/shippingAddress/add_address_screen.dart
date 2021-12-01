@@ -16,7 +16,7 @@ class AddAddress extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: appbar("Add new Address", "Please enter your new address"),
+            child: appbar("Add new Address", "Please enter your new address",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

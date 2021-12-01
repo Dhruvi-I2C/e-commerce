@@ -25,7 +25,7 @@ class Settings extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
-            child: appbar("Settings", "Please enter your new address"),
+            child: appbar("Settings", "Please enter your new address",context),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 5.09),

@@ -248,7 +248,7 @@ Widget addCartContainer(image) => Container(
       ),
     );
 
-Widget appbar(mainText, subText) => Column(
+Widget appbar(mainText, subText,context) => Column(
       children: [
         SizedBox(
           height: Get.height / 24.61,
@@ -259,6 +259,7 @@ Widget appbar(mainText, subText) => Column(
             alignment: Alignment.topRight,
             child: InkWell(
               onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
                 Get.to(() => HomeScreen());
               },
               child: Text(

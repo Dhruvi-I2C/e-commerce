@@ -42,10 +42,11 @@ class HomeScreen extends StatelessWidget {
             color: lightBlue,
             child: searchBar(
                     (){
-                  Get.off(()=>FilterScreen());
+                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FilterScreen(),));
+                  // Get.off(()=>FilterScreen());
                 },
                     (){
-                  Get.off(()=>SortScreen());
+                  // Get.off(()=>SortScreen());
                 }),
           ),
           Padding(
@@ -98,7 +99,8 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: (){
-                                    Get.to(()=>LaptopScreen());
+                                    // Get.to(()=>LaptopScreen());
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -216,7 +218,8 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: (){
-                                    Get.to(()=>LaptopScreen());
+                                    // Get.to(()=>LaptopScreen());
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
