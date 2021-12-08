@@ -1,10 +1,15 @@
+import 'package:e_commerce_app/controller/dashboard_controller.dart';
 import 'package:e_commerce_app/controller/home_controller.dart';
 import 'package:e_commerce_app/screen/Home/best_selling/best_selling_screen.dart';
 import 'package:e_commerce_app/screen/Home/category/category_screen.dart';
 import 'package:e_commerce_app/screen/Home/filter/filter_screen.dart';
+import 'package:e_commerce_app/screen/Home/gift/gift_screen.dart';
 import 'package:e_commerce_app/screen/Home/laptop/laptop_screen.dart';
 import 'package:e_commerce_app/screen/Home/sort/sort_screen.dart';
 import 'package:e_commerce_app/screen/auth_screen/signIn_screen.dart';
+import 'package:e_commerce_app/screen/cart/add_to_cart_screen.dart';
+import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
+import 'package:e_commerce_app/screen/dashboard/navigator_screen.dart';
 import 'package:e_commerce_app/screen/favourite/favourite_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
@@ -14,7 +19,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {
+   HomeScreen({Key key}) : super(key: key);
   HomeController homeController = Get.put(HomeController());
+  DashBoardController dashBoardController = Get.find();
+
   List<Map> images = [
     {"image":laptop,"background":background},
     {"image":laptop2,"background":background},
@@ -31,7 +39,8 @@ class HomeScreen extends StatelessWidget {
     {"image":laptop6,"background":background3},
   ];
 
-  @override
+
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
@@ -42,12 +51,19 @@ class HomeScreen extends StatelessWidget {
             color: lightBlue,
             child: searchBar(
                     (){
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FilterScreen(),));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FilterScreen(),));
                   // Get.off(()=>FilterScreen());
                 },
                     (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SortScreen(),));
                   // Get.off(()=>SortScreen());
-                }),
+                }
+                ,context,
+                (){
+                      dashBoardController.tabIndex.value=1;
+                      Navigator.of(context,rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => DashboardScreen()));
+                }
+                ),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height /6),
@@ -58,36 +74,53 @@ class HomeScreen extends StatelessWidget {
                 behavior: MyBehavior(),
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding:  EdgeInsets.only(left:10,right: 10,top: 15),
+                    padding:  EdgeInsets.only(top: 15),
                     child: Column(
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            homeCircleAvatar((){
-                              Get.off(()=>CategoryScreen());
-                            },menu_icon, "Categories"),
-                            homeCircleAvatar((){
-                              Get.off(()=>FavouriteScreen());
-                            },star, "Favorites"),
-                            homeCircleAvatar((){
-                              Get.off(()=>CategoryScreen());
-                            },gift_icon, "Gifts"),
-                            homeCircleAvatar((){
-                              Get.off(()=>BestSellingScreen());
-                            },people, "Best selling"),
-                          ],
+                        Padding(
+                          padding:  EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              homeCircleAvatar((){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryScreen(),));
+                                // Get.off(()=>CategoryScreen());
+                              },menu_icon, "Categories"),
+                               SizedBox(width: 2,),
+                               homeCircleAvatar((){
+                                 dashBoardController.tabIndex.value=1;
+                                 Navigator.of(context,rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => DashboardScreen()));
+                                  // dashBoardController.tabIndex.value=1;
+                                  // Navigator.push(context, MaterialPageRoute(builder: (context) => FavouriteScreen())).then((value) {
+                                  //   // dashBoardController.tabIndex.value=value;
+                                  //   Navigator.pop(context);
+                                  // });
+                                  // Get.off(()=>FavouriteScreen());
+                                },star, "Favorites"),
+                              SizedBox(width: 8,),
+
+                              homeCircleAvatar((){
+
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => GiftScreen(),));
+                              },gift_icon, "Gifts"),
+                              SizedBox(width: 2,),
+                              homeCircleAvatar((){
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => BestSellingScreen(),));
+                                // Get.off(()=>BestSellingScreen());
+                              },people, "Best selling"),
+                            ],
+                          ),
                         ),
                         SizedBox(
                           height: 20,
                         ),
                         GridView.builder(
                           shrinkWrap: true,
-                          padding: EdgeInsets.only(bottom: 20),
+                          padding: EdgeInsets.only(bottom: 20,right: 10,left: 10),
                           physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              childAspectRatio: 2/2.5,
+                              childAspectRatio: Get.width>450?2/2.1:Get.width<370?2/2.8:2/2.5,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 15
                           ),
@@ -99,8 +132,9 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: (){
+                                    Get.to(()=>AddCartScreen());
                                     // Get.to(()=>LaptopScreen());
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
+                                    // Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -126,14 +160,14 @@ class HomeScreen extends StatelessWidget {
                                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           SizedBox(width: 10,),
-                                          Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: 15),),
-                                          SizedBox(width: 18),
+                                          Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: 16),),
+                                          SizedBox(width:Get.width>450?50:Get.width<370?10: 20),
                                           Obx(()=> InkWell(
                                             onTap: (){
                                               homeController.favourite[index] = !homeController.favourite[index];
                                               // print(homeController.favourite.value);
                                             },
-                                            child:  homeController.favourite[index]==false?Icon(Icons.favorite_border,color: appColor,):Icon(Icons.favorite,color: appColor,),
+                                            child:  homeController.favourite[index]==false?Icon(Icons.favorite_border,color: appColor,size: 27,):Icon(Icons.favorite,color: appColor,size: 27,),
                                           ),
                                           ),
                                         ],
@@ -141,7 +175,7 @@ class HomeScreen extends StatelessWidget {
                                       SizedBox(height:10),
                                       Padding(
                                         padding:  EdgeInsets.only(left: 10),
-                                        child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize:16),),
+                                        child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize:17),),
                                       ),
                                     ],
                                   ),
@@ -162,51 +196,56 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         // SizedBox(height: 15,),
-                        Container(
-                          height: 130,
-                          width: double.infinity,
-                          child: Padding(
-                            padding:  EdgeInsets.only(left: 25),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text("30%",style: TextStyle(fontSize: 30,fontFamily: "poppinsRegular",color: white,fontWeight: FontWeight.w600),),
-                                    Padding(
-                                      padding: EdgeInsets.only(top: 7.0),
-                                      child: Text("off",style: TextStyle(fontSize: 18,fontFamily: "poppinsRegular",color: white,fontWeight: FontWeight.w100),),
-                                    )
-                                  ],
-                                ),
-                                MaterialButton(
-                                  onPressed: (){},
-                                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                                  height: 25,
-                                  minWidth: 35,
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
-                                  color: white,
-                                  child: Text("Shop Now",style: TextStyle(fontSize: 8,fontFamily: "SegoeSemiBold",color: appColor),),
-                                )
-                              ],
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Container(
+                            height: 130,
+                            width: double.infinity,
+                            child: Padding(
+                              padding:  EdgeInsets.only(left: 25),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text("30%",style: TextStyle(fontSize: 30,fontFamily: "poppinsRegular",color: white,fontWeight: FontWeight.w600),),
+                                      Padding(
+                                        padding: EdgeInsets.only(top: 7.0),
+                                        child: Text("off",style: TextStyle(fontSize: 18,fontFamily: "poppinsRegular",color: white,fontWeight: FontWeight.w100),),
+                                      )
+                                    ],
+                                  ),
+                                  MaterialButton(
+                                    onPressed: (){
+                                      print(Get.width);
+                                    },
+                                    materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                                    height: 25,
+                                    minWidth: 35,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
+                                    color: white,
+                                    child: Text("Shop Now",style: TextStyle(fontSize: 8,fontFamily: "SegoeSemiBold",color: appColor),),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                  image: AssetImage(banner),fit: BoxFit.fill
-                              )
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(banner),fit: BoxFit.fill
+                                )
+                            ),
                           ),
                         ),
                         SizedBox(height: 30,),
                         GridView.builder(
                           shrinkWrap: true,
-                          padding: EdgeInsets.only(bottom: 20),
+                          padding: EdgeInsets.only(bottom: 20,right: 10,left: 10),
                           physics: NeverScrollableScrollPhysics(),
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              childAspectRatio: 2/2.5,
+                              childAspectRatio:Get.width>450?2/2.1:Get.width<370?2/2.8:2/2.5,
                               crossAxisSpacing: 10,
                               mainAxisSpacing: 15
                           ),
@@ -218,8 +257,10 @@ class HomeScreen extends StatelessWidget {
                               children: [
                                 InkWell(
                                   onTap: (){
+
+                                    Get.to(()=>AddCartScreen());
                                     // Get.to(()=>LaptopScreen());
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
+
                                   },
                                   child: Container(
                                     alignment: Alignment.center,
@@ -244,14 +285,14 @@ class HomeScreen extends StatelessWidget {
                                       Row(
                                         children: [
                                           SizedBox(width: 10),
-                                          Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: 15),),
-                                          SizedBox(width: 18),
+                                          Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: 16),),
+                                          SizedBox(width:Get.width>450?50:Get.width<370?10: 20),
                                           Obx(()=> InkWell(
                                             onTap: (){
                                               homeController.favourite2[index] = !homeController.favourite2[index];
                                               // print(homeController.favourite.value);
                                             },
-                                            child:  homeController.favourite2[index]==false?Icon(Icons.favorite_border,color: appColor,):Icon(Icons.favorite,color: appColor,),
+                                            child:  homeController.favourite2[index]==false?Icon(Icons.favorite_border,color: appColor,size: 27,):Icon(Icons.favorite,color: appColor,size: 27,),
                                           ),
                                           ),
                                         ],
@@ -259,7 +300,7 @@ class HomeScreen extends StatelessWidget {
                                       SizedBox(height:10,),
                                       Padding(
                                         padding:  EdgeInsets.only(left: 10),
-                                        child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize:16),),
+                                        child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize:17),),
                                       ),
                                     ],
                                   ),

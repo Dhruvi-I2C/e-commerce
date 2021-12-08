@@ -21,6 +21,7 @@ class ChangePassword extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
+            margin: EdgeInsets.only(top: 18),
             child: appbar("Change Password", "Change your password from here",context),
           ),
           Padding(
@@ -34,7 +35,7 @@ class ChangePassword extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: Get.height/4.92,
+                      height: Get.height/6,
                     ),
                     Text(
                       "Old Password",

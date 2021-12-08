@@ -25,6 +25,7 @@ class Settings extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
+            margin: EdgeInsets.only(top: 18),
             child: appbar("Settings", "Please enter your new address",context),
           ),
           Padding(
@@ -56,8 +57,8 @@ class Settings extends StatelessWidget {
                             ),
                             Obx(
                                   () => FlutterSwitch(
-                                width: 80.0,
-                                height: 40.0,
+                                width: 55.0,
+                                height: 25.0,
                                 activeSwitchBorder:
                                 Border.all(color: appColor, width: 1.5),
                                 inactiveSwitchBorder:
@@ -67,11 +68,11 @@ class Settings extends StatelessWidget {
                                 settingController.switchValue.isFalse
                                     ? grayLight
                                     : appColor,
-                                toggleSize: 35.0,
+                                toggleSize: 25.0,
                                 inactiveColor: white,
                                 value: settingController.switchValue.value,
                                 borderRadius: 30.0,
-                                padding: 3.0,
+                                padding: 1,
                                 showOnOff: true,
                                 onToggle: (val) {
                                   settingController.switchValue.value = val;
@@ -191,7 +192,7 @@ class Settings extends StatelessWidget {
                                         height: 20,
                                       ),
                                       Text(
-                                        "Your order has been Placed successfully.",
+                                        "Are you sure you want to logout?",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize: 16,
@@ -206,7 +207,15 @@ class Settings extends StatelessWidget {
                                         children: [
                                           MaterialButton(
                                             onPressed: () {
-                                              Get.to(()=>FingerprintVerifyScreen());
+                                              Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (BuildContext context) => FingerprintVerifyScreen(),
+                                                ),
+                                                    (route) => false,
+                                              );
+                                              // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => FingerprintVerifyScreen(),));
+                                              // Get.off(()=>FingerprintVerifyScreen());
                                             },
                                             height: 40,
                                             minWidth: 100,
@@ -249,12 +258,22 @@ class Settings extends StatelessWidget {
                                     ],
                                   ));
                             },
-                            child: Text(
-                              "Logout",
-                              style: TextStyle(
-                                color: NeutralDark,
-                                fontSize: 19,
-                                fontFamily: "SegoeSemiBold",
+                            child: Container(
+                              height: 50,
+                              padding: EdgeInsets.only(bottom: 5),
+                              width: double.infinity,
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                  color: whiteLight,
+                                borderRadius: BorderRadius.circular(20)
+                              ),
+                              child: Text(
+                                "Logout",
+                                style: TextStyle(
+                                  color: NeutralDark,
+                                  fontSize: 19,
+                                  fontFamily: "SegoeSemiBold",
+                                ),
                               ),
                             ),
                           ),
@@ -267,7 +286,7 @@ class Settings extends StatelessWidget {
                             height: Get.height / 14.76,
                             minWidth: Get.width / 1.31,
                             onPressed: () {
-                              Get.off(()=>ProfileScreen());
+                              Navigator.pop(context);
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50)),

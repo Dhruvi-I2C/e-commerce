@@ -1,6 +1,8 @@
+import 'package:e_commerce_app/controller/dashboard_controller.dart';
 import 'package:e_commerce_app/screen/Home/filter/filter_screen.dart';
 import 'package:e_commerce_app/screen/Home/sort/sort_screen.dart';
 import 'package:e_commerce_app/screen/cart/add_to_cart_screen.dart';
+import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -12,6 +14,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class FavouriteScreen extends StatelessWidget {
+   FavouriteScreen({Key key}) : super(key: key);
+
+   DashBoardController dashBoardController = Get.find();
+
   List<Map> image = [
     {"image": mobile},
     {"image": earpod},
@@ -29,10 +35,25 @@ class FavouriteScreen extends StatelessWidget {
             width: Get.width,
             color: lightBlue,
             child: searchBar(() {
-              Get.off(() => FilterScreen());
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FilterScreen(),
+                  ));
+              // Get.off(()=>FilterScreen());
             }, () {
-              Get.off(() => SortScreen());
-            }),
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SortScreen(),
+                  ));
+              // Get.off(()=>SortScreen());
+            }, context,
+                    (){
+                  // dashBoardController.tabIndex.value=1;
+                  // Navigator.of(context,rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => DashboardScreen()));
+                }
+            ),
           ),
           Padding(
             padding: EdgeInsets.only(top: Get.height / 6),
@@ -48,8 +69,8 @@ class FavouriteScreen extends StatelessWidget {
                   itemBuilder: (context, index) => Padding(
                     padding: EdgeInsets.only(bottom: 15.0),
                     child: InkWell(
-                      onTap: (){
-                        Get.to(()=>AddCartScreen());
+                      onTap: () {
+                        Get.to(() => AddCartScreen());
                       },
                       child: Container(
                         height: 110,
@@ -62,7 +83,9 @@ class FavouriteScreen extends StatelessWidget {
                             children: [
                               SlidableAction(
                                 // An action can be bigger than the others.
-                                onPressed: (data) {},
+                                onPressed: (data) {
+                                  Get.to(()=>AddCartScreen());
+                                },
                                 backgroundColor: green,
                                 foregroundColor: Colors.white,
                                 icon: Icons.shopping_cart_outlined,

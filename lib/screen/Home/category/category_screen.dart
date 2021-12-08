@@ -63,7 +63,7 @@ class CategoryScreen extends StatelessWidget {
             ),*/
           ),
           Padding(
-            padding: EdgeInsets.only(top: Get.height / 5.09),
+            padding: EdgeInsets.only(top: Get.height/6),
             child: Container(
               height: Get.height / 1.23,
               width: double.infinity,
@@ -76,16 +76,16 @@ class CategoryScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         homeCircleAvatar((){
-                          Get.to(()=>LaptopScreen());
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                         },webcam, "Webcam"),
                         homeCircleAvatar((){
-                          Get.to(()=>LaptopScreen());
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                         },sound, "Sounds "),
                         homeCircleAvatar((){
-                          Get.to(()=>LaptopScreen());
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                         },usb, "USB"),
                         homeCircleAvatar((){
-                          Get.to(()=>LaptopScreen());
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => LaptopScreen(),));
                         },joy_stick, "Joy Stick"),
                       ],
                     ),

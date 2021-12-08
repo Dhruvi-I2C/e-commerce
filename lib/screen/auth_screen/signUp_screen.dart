@@ -1,5 +1,7 @@
+import 'package:e_commerce_app/controller/dashboard_controller.dart';
 import 'package:e_commerce_app/controller/signIn_controller.dart';
 import 'package:e_commerce_app/screen/auth_screen/signIn_screen.dart';
+import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -8,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 class SignUpScreen extends StatelessWidget {
+  DashBoardController dashBoardController = Get.put(DashBoardController());
 
   @override
   Widget build(BuildContext context) {
@@ -146,7 +149,7 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height:Get.height/12),
+                        SizedBox(height:60),
                         Text(
                           "Or sign up with social account",
                           style: TextStyle(
@@ -195,11 +198,14 @@ class SignUpScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: Get.height/30),
+                        SizedBox(height: Get.height/18),
                         MaterialButton(
                           height: Get.height/14.76,
                           minWidth: Get.width/1.31,
                           onPressed: (){
+
+                            dashBoardController.tabIndex.value=0;
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
                             print("Sign Up");
                           },
                           shape: RoundedRectangleBorder(
@@ -221,10 +227,13 @@ class SignUpScreen extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: (){
-                                Get.to(SignInScreen());
+                                Get.off(SignInScreen());
                               },
                                 child: Text(" SIGN IN",style: TextStyle(color: appColor,fontFamily: "SegoeBold",fontSize: 16),)),
                           ],
+                        ),
+                        SizedBox(
+                          height: 20,
                         )
                       ],
                     ),

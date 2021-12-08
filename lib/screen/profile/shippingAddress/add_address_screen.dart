@@ -16,6 +16,7 @@ class AddAddress extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
+            margin: EdgeInsets.only(top: 18),
             child: appbar("Add new Address", "Please enter your new address",context),
           ),
           Padding(
@@ -228,7 +229,7 @@ class AddAddress extends StatelessWidget {
                             minWidth: Get.width/1.31,
                             onPressed: (){
                               print("Add Address");
-                              Get.to(()=>AddAddress());
+                              Get.back();
                             },
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(50)

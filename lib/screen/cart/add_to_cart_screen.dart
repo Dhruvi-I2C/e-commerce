@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/controller/add_cart_controller.dart';
 import 'package:e_commerce_app/screen/Home/home_screen.dart';
+import 'package:e_commerce_app/screen/profile/payment/payment_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/common_widgets.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
@@ -47,12 +48,16 @@ class AddCartScreen extends StatelessWidget {
                 SizedBox(
                   height: Get.height / 29.53,
                 ),
-                Container(
-                  height: Get.height / 5.09,
-                  width: Get.width / 1.71,
-                  child: Image.asset(
-                    laptop2,
-                    fit: BoxFit.cover,
+                Obx(
+                  () => Container(
+                    height: Get.height / 5.09,
+                    width: Get.width / 1.71,
+                    child: Image.asset(
+                      addCartController.laptopSelect1.isTrue
+                          ? laptop4
+                          : addCartController.laptopSelect2.isTrue?laptop3:addCartController.laptopSelect3.isTrue?laptop5:laptop2,
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -61,11 +66,47 @@ class AddCartScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    addCartContainer(laptop4),
+                    InkWell(
+                      child: addCartContainer(laptop4),
+                      onTap: () {
+                        if (addCartController.laptopSelect1.isTrue ||
+                            addCartController.laptopSelect2.isTrue ||
+                            addCartController.laptopSelect3.isTrue) {
+                          addCartController.laptopSelect1(false);
+                          addCartController.laptopSelect2(false);
+                          addCartController.laptopSelect3(false);
+                        }
+                        addCartController.laptopSelect1(true);
+
+                        // addCartController.laptopSelect1.value=!addCartController.laptopSelect1.value;
+                      },
+                    ),
                     SizedBox(width: Get.width / 39.27),
-                    addCartContainer(laptop3),
+                    InkWell(
+                        onTap: () {
+                          if (addCartController.laptopSelect1.isTrue ||
+                              addCartController.laptopSelect2.isTrue ||
+                              addCartController.laptopSelect3.isTrue) {
+                            addCartController.laptopSelect1(false);
+                            addCartController.laptopSelect2(false);
+                            addCartController.laptopSelect3(false);
+                          }
+                          addCartController.laptopSelect2(true);
+                        },
+                        child: addCartContainer(laptop3)),
                     SizedBox(width: Get.width / 39.27),
-                    addCartContainer(laptop5),
+                    InkWell(
+                        onTap: () {
+                          if (addCartController.laptopSelect1.isTrue ||
+                              addCartController.laptopSelect2.isTrue ||
+                              addCartController.laptopSelect3.isTrue) {
+                            addCartController.laptopSelect1(false);
+                            addCartController.laptopSelect2(false);
+                            addCartController.laptopSelect3(false);
+                          }
+                          addCartController.laptopSelect3(true);
+                        },
+                        child: addCartContainer(laptop5)),
                   ],
                 )
               ],
@@ -154,7 +195,7 @@ class AddCartScreen extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 50,
                         ),
                         Text(
                           "Select Color",
@@ -275,7 +316,7 @@ class AddCartScreen extends StatelessWidget {
                           ],
                         ),
                         SizedBox(
-                          height: 20,
+                          height: 60,
                         ),
                         Text(
                           "Specification",
@@ -374,7 +415,9 @@ class AddCartScreen extends StatelessWidget {
                         Align(
                           alignment: Alignment.center,
                           child: MaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.off(PaymentScreen());
+                            },
                             height: 50,
                             minWidth: 240,
                             color: appColor,

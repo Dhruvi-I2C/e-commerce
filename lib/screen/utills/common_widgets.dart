@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/controller/add_cart_controller.dart';
 import 'package:e_commerce_app/screen/Home/home_screen.dart';
+import 'package:e_commerce_app/screen/favourite/favourite_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
 import 'package:e_commerce_app/screen/utills/images.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -74,30 +76,33 @@ Widget homeCircleAvatar(onTap, image, text) => Column(
         InkWell(
           onTap: onTap,
           child: CircleAvatar(
-            radius: 35,
+            radius: 30,
             backgroundColor: grayLight1,
             child: SvgPicture.asset(
               image,
-              height: 25,
-              width: 25,
+              height: 20,
+              width: 20,
             ),
           ),
         ),
         SizedBox(
           height: 5,
         ),
-        Text(
-          text,
-          style: TextStyle(
-              fontSize: 16, fontFamily: "SegoeRegular", color: appColor),
+        SizedBox(
+          child: Text(
+            text,
+            style: TextStyle(
+                fontSize: 16, fontFamily: "SegoeRegular", color: appColor),
+          ),
         )
       ],
     );
 
 Widget otpContainer() => Container(
-      height: Get.height / 10.86,
-      width: Get.width / 5.78,
+      height: 65,
+      width: 65,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextField(
             cursorColor: textColorBlack,
@@ -107,14 +112,17 @@ Widget otpContainer() => Container(
             decoration: InputDecoration(
                 border: InputBorder.none,
                 counterText: '',
-                contentPadding: EdgeInsets.only(top: 15)),
+                contentPadding: EdgeInsets.only(top:15)),
             textAlign: TextAlign.center,
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 10, right: 10),
-            child: Divider(
-              color: yellow,
-              thickness: 2,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(left: 10, right: 10),
+              child: Divider(
+                color: yellow,
+                thickness: 2,
+              ),
             ),
           )
         ],
@@ -123,7 +131,7 @@ Widget otpContainer() => Container(
           color: whiteLight, borderRadius: BorderRadius.circular(20)),
     );
 
-Widget searchBar(onTap, onTap2) => Column(
+Widget searchBar(onTap, onTap2,context,ontap) => Column(
       children: [
         SizedBox(
           height: Get.height / 36.909,
@@ -136,7 +144,7 @@ Widget searchBar(onTap, onTap2) => Column(
             ),
             Container(
               height: Get.height / 12.03,
-              width: Get.width / 1.57,
+              width: Get.width / 1.40,
               child: TextField(
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
@@ -175,15 +183,18 @@ Widget searchBar(onTap, onTap2) => Column(
               ),
             ),
             SizedBox(
-              width: Get.width / 9.82,
+              width:Get.width/17.85,
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 15.0),
-              child: SvgPicture.asset(
-                favourite_icon,
-                color: appColor,
-                height: Get.height / 24.61,
-                width: Get.width / 13.09,
+              child: InkWell(
+                onTap:ontap,
+                child: SvgPicture.asset(
+                  favourite_icon,
+                  color: appColor,
+                  height: 26,
+                  width: 26,
+                ),
               ),
             ),
             SizedBox(
@@ -193,8 +204,8 @@ Widget searchBar(onTap, onTap2) => Column(
               padding: EdgeInsets.only(bottom: 13.0),
               child: SvgPicture.asset(
                 notification,
-                height: Get.height / 21.09,
-                width: Get.width / 11.22,
+                height: 32,
+                width: 32,
               ),
             )
           ],
@@ -251,7 +262,7 @@ Widget addCartContainer(image) => Container(
 Widget appbar(mainText, subText,context) => Column(
       children: [
         SizedBox(
-          height: Get.height / 24.61,
+          height: 10,
         ),
         Padding(
           padding: EdgeInsets.only(right: 15.0),
@@ -259,8 +270,10 @@ Widget appbar(mainText, subText,context) => Column(
             alignment: Alignment.topRight,
             child: InkWell(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
-                Get.to(() => HomeScreen());
+                Navigator.of(context).pop(false);
+                // Navigator.pop(context,false);
+                // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                // Get.to(() => HomeScreen());
               },
               child: Text(
                 "Back",

@@ -111,14 +111,14 @@ class AllOrder extends StatelessWidget {
                           ),
                         ),
                       ]),
-                  SizedBox(width: Get.width/7,),
+                  SizedBox(width: Get.width<370?35:Get.width/7,),
                   MaterialButton(
                     onPressed: (){},
                     height: 35,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(35)
                     ),
-                    minWidth: 80,
+                    minWidth: 70,
                     color: image[index]["statusText"]=="Comming"?green:appColor,
                     child: Text(image[index]["statusText"],style: TextStyle(color: white,fontFamily: "SegoeRegular",fontSize: 14),),
                   )

@@ -92,7 +92,18 @@ class ProfileScreen extends StatelessWidget {
                                   fontFamily: "SegoeSemiBold"),
                             ),
                             onTap: (){
-                              Get.to(list[index]["onTap"]);
+
+                              if(list[0]["onTap"]==list[index]["onTap"]){
+                                print(list[0]["onTap"]);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => list[0]["onTap"],));
+                              }
+                              else{
+                                Get.to(list[index]["onTap"]);
+                              }
+                              //
+                              // Get.to(()=>list[index]["onTap"]);
+
+                              // Navigator.push(context, MaterialPageRoute(builder: (context) => list[index]["onTap"],));
                             },
                             subtitle:Text(
                               list[index]["subtitle"],

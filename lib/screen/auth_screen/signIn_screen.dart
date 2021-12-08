@@ -28,7 +28,7 @@ class SignInScreen extends StatelessWidget {
               height: Get.height / 1.23,
               width: double.infinity,
               child: Padding(
-                padding: EdgeInsets.only(top: Get.height / 10),
+                padding: EdgeInsets.only(top: Get.height /12),
                 child: ScrollConfiguration(
                   behavior: MyBehavior(),
                   child: SingleChildScrollView(
@@ -126,22 +126,37 @@ class SignInScreen extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(width: Get.width/11.22),
-                            Obx(()=>
-                              Checkbox(
-                                side: BorderSide(
+                            // SizedBox(width: Get.width/11.22),
+                            Obx(() => InkWell(
+                              onTap: () {
+                                signInController.checkBool.value =
+                                !signInController.checkBool.value;
+                              },
+                              child: Container(
+                                height: 25,
+                                width: 25,
+                                alignment: Alignment.center,
+                                child: signInController.checkBool.isTrue
+                                    ? Icon(
+                                  Icons.check,
                                   color: yellow,
-                                  width: 2
-                                ),
-                                    focusColor: yellow,
-                                    activeColor: yellow,
-                                    value: signInController.checkBool.value,
-                                    onChanged: (val) {
-                                      signInController.checkBool.value = !signInController.checkBool.value;
-                                    }),
-
+                                  size: 15,
+                                )
+                                    : SizedBox.shrink(),
+                                decoration: BoxDecoration(
+                                    color: white,
+                                    border: Border.all(
+                                        color: yellow, width: 2)),
+                              ),
+                            )),
+                            SizedBox(
+                              width: 10,
                             ),
                             Text(
                               "Remember me",
@@ -164,7 +179,7 @@ class SignInScreen extends StatelessWidget {
 
                           ],
                         ),
-                        SizedBox(height:Get.height/29.53),
+                        SizedBox(height:Get.height/18),
                         Text(
                           "Or sign in with social account?",
                           style: TextStyle(
@@ -213,13 +228,13 @@ class SignInScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: Get.height/36.91),
+                        SizedBox(height: Get.height/20),
                         MaterialButton(
                           height: Get.height/14.76,
                           minWidth: Get.width/1.31,
                           onPressed: (){
                            print("Sign IN");
-                           Get.to(VerifyIdentity());
+                           Get.off(VerifyIdentity());
                           },
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(50)
@@ -240,10 +255,13 @@ class SignInScreen extends StatelessWidget {
                             ),
                             InkWell(
                               onTap: (){
-                                Get.to(SignUpScreen());
+                                Get.off(SignUpScreen());
                               },
                                 child: Text(" SIGN UP",style: TextStyle(color: appColor,fontFamily: "SegoeBold",fontSize: 16),)),
                           ],
+                        ),
+                        SizedBox(
+                          height: 20,
                         )
                       ],
                     ),
@@ -257,13 +275,15 @@ class SignInScreen extends StatelessWidget {
                       topRight: Radius.circular(30.0))),
             ),
           ),
-          Positioned(
-            top: Get.height / 7.38,
-            left: Get.width / 2.7,
-            child: SvgPicture.asset(
-              profileDefault,
-              width: Get.width/3.27,
-              height: Get.height/6.15,
+          Align(
+            alignment: Alignment.topCenter,
+            child: Padding(
+              padding:  EdgeInsets.only(top: Get.height/7.38),
+              child: SvgPicture.asset(
+                profileDefault,
+                width: Get.width / 3.27,
+                height: Get.height / 6.15,
+              ),
             ),
           )
         ],

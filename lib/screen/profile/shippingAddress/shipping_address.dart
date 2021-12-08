@@ -29,6 +29,7 @@ class ShippingAddress extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
+            margin: EdgeInsets.only(top: 18),
             child: appbar("Shipping Address",
                 "Your Item Will be Deliver on below address",context),
           ),

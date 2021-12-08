@@ -18,6 +18,7 @@ class PaymentScreen extends StatelessWidget {
             height: Get.height,
             width: Get.width,
             color: lightBlue,
+            margin: EdgeInsets.only(top: 18),
             child: appbar("Payment", "Add your payment method",context),
           ),
           Padding(
@@ -34,13 +35,13 @@ class PaymentScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: 30,
                         ),
                         Container(
-                          height: 250,
+                          height: 200,
                           width: double.infinity,
                           child: Image.asset(
-                            visa_card,
+                            visaCard,
                             fit: BoxFit.fill,
                           ),
                         ),
@@ -292,8 +293,10 @@ class PaymentScreen extends StatelessWidget {
                                       ),
                                       Text(
                                         "Your order has been Placed successfully.",
+                                        maxLines: 2,
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontSize: 16,
+                                          fontSize: 18,
                                           color: black,
                                           fontFamily: "SegoeRegular"
                                         ),

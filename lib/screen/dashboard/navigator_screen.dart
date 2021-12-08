@@ -20,6 +20,9 @@ class NavigatorPage extends StatelessWidget {
           page: ()=>Scaffold(
             body: child,
           ),
+          // page: ()=>Scaffold(
+          //   body: child,
+          // ),
         );
       },
     );

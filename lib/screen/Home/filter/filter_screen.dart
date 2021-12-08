@@ -35,21 +35,25 @@ class FilterScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: Get.height/29.53,
+                    // SizedBox(
+                    //   height: Get.height/29.53,
+                    // ),
+                    Padding(
+                      padding:  EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Text(
+                        "Price Range",
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: "SegoeSemiBold",
+                            color: blackLight),
+                      ),
                     ),
-                    Text(
-                      "Price Range",
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: "SegoeSemiBold",
-                          color: blackLight),
-                    ),
-                    SizedBox(
-                      height: Get.height/49.21,
-                    ),
+                    // SizedBox(
+                    //   height: Get.height/49.21,
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -91,52 +95,56 @@ class FilterScreen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: Get.height/36.91,
-                    ),
-                    Obx(
-                      () => RangeSlider(
-                        inactiveColor: grayBlue,
-                        activeColor: appColor,
-                        values: filterController.currentRangeValues.value,
-                        min: 0,
-                        max: 100,
-                        labels: RangeLabels(filterController.startLabel.value,
-                            filterController.endLabel.value),
-                        onChanged: (values) {
-                          filterController.startLabel.value =
-                              values.start.toString();
-                          filterController.endLabel.value =
-                              values.end.toString();
-                          filterController.currentRangeValues.value = values;
-                        },
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 15.0, right: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "MIN",
-                            style: TextStyle(
-                                color: NeutralGrey,
-                                fontFamily: "SegoeBold",
-                                fontSize: 13),
+                    // SizedBox(
+                    //   height: Get.height/36.91,
+                    // ),
+                    Stack(
+                      children: [
+                        Obx(
+                              () => RangeSlider(
+                            inactiveColor: grayBlue,
+                            activeColor: appColor,
+                            values: filterController.currentRangeValues.value,
+                            min: 0,
+                            max: 100,
+                            labels: RangeLabels(filterController.startLabel.value,
+                                filterController.endLabel.value),
+                            onChanged: (values) {
+                              filterController.startLabel.value =
+                                  values.start.toString();
+                              filterController.endLabel.value =
+                                  values.end.toString();
+                              filterController.currentRangeValues.value = values;
+                            },
                           ),
-                          Text(
-                            "MAX",
-                            style: TextStyle(
-                                color: NeutralGrey,
-                                fontFamily: "SegoeBold",
-                                fontSize: 13),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 15.0, right: 15,top: 35),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "MIN",
+                                style: TextStyle(
+                                    color: NeutralGrey,
+                                    fontFamily: "SegoeBold",
+                                    fontSize: 13),
+                              ),
+                              Text(
+                                "MAX",
+                                style: TextStyle(
+                                    color: NeutralGrey,
+                                    fontFamily: "SegoeBold",
+                                    fontSize: 13),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      height: Get.height/36.91,
-                    ),
+                    // SizedBox(
+                    //   height: Get.height/36.91,
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(left: 15.0),
                       child: Text(
@@ -147,9 +155,9 @@ class FilterScreen extends StatelessWidget {
                             color: blackLight),
                       ),
                     ),
-                    SizedBox(
-                      height: Get.height/73.82,
-                    ),
+                    // SizedBox(
+                    //   height: Get.height/73.82,
+                    // ),
                     Obx(
                       () => ChipsChoice.multiple(
                         value: filterController.tags.value,
@@ -191,9 +199,9 @@ class FilterScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: Get.height/36.91,
-                    ),
+                    // SizedBox(
+                    //   height: Get.height/36.91,
+                    // ),
                     Padding(
                       padding: EdgeInsets.only(left: 15.0),
                       child: Text(

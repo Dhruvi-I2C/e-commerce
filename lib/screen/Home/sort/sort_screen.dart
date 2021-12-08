@@ -57,7 +57,7 @@ class SortScreen extends StatelessWidget {
                                     sortController.onTapList[index]= !sortController.onTapList[index];
                                   },
                                  child: Container(
-                                   height: 60,
+                                   height: 45,
                                    width: double.infinity,
                                    color: sortController.onTapList[index]==false? white:whiteShade,
                                    alignment: Alignment.centerLeft,

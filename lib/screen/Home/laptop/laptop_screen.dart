@@ -90,10 +90,10 @@ class LaptopScreen extends StatelessWidget {
                   behavior: MyBehavior(),
                   child: GridView.builder(
                     shrinkWrap: true,
-                    padding: EdgeInsets.symmetric(horizontal: 10,vertical: 25),
+                    padding: EdgeInsets.symmetric(horizontal: 5,vertical: 25),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        childAspectRatio: 2/2.5,
+                        childAspectRatio:Get.width>450?2/2.1:Get.width<370?2/2.8:2/2.5,
                         crossAxisSpacing: 10,
                         mainAxisSpacing: 15
                     ),
@@ -130,14 +130,14 @@ class LaptopScreen extends StatelessWidget {
                                 Row(
                                   children: [
                                     SizedBox(width: 10,),
-                                    Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: Get.height/46.13),),
-                                    SizedBox(width: 18,),
+                                    Text("Surface laptop 3",style: TextStyle(color: blackShade1,fontFamily: "SegoeRegular",fontSize: 16),),
+                                    SizedBox(width:Get.width>450?50:Get.width<370?10: 20),
                                     Obx(()=> InkWell(
                                       onTap: (){
                                         homeController.favourite3[index] = !homeController.favourite3[index];
                                         // print(homeController.favourite.value);
                                       },
-                                      child:  homeController.favourite3[index]==false?Icon(Icons.favorite_border,color: appColor,):Icon(Icons.favorite,color: appColor,),
+                                      child:  homeController.favourite3[index]==false?Icon(Icons.favorite_border,color: appColor,size: 28,):Icon(Icons.favorite,color: appColor,size: 28,),
                                     ),
                                     ),
                                   ],
@@ -145,7 +145,7 @@ class LaptopScreen extends StatelessWidget {
                                 SizedBox(height:10,),
                                 Padding(
                                   padding:  EdgeInsets.only(left: 10),
-                                  child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize: Get.height/43.42),),
+                                  child: Text("USD 999",style: TextStyle(color: appColor,fontFamily: "SegoeSemiBold",fontSize: 17),),
                                 ),
                               ],
                             ),

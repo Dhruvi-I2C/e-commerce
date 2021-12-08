@@ -1,5 +1,7 @@
+import 'package:e_commerce_app/controller/dashboard_controller.dart';
 import 'package:e_commerce_app/controller/my_order_controller.dart';
 import 'package:e_commerce_app/screen/Home/home_screen.dart';
+import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
 import 'package:e_commerce_app/screen/profile/myOrder/allOrder/all_order_screen.dart';
 import 'package:e_commerce_app/screen/profile/myOrder/recivedOrder/recive_order_screen.dart';
 import 'package:e_commerce_app/screen/utills/colors.dart';
@@ -14,6 +16,7 @@ import 'commingOrder/comming_order_screen.dart';
 class MyOrderScreen extends StatelessWidget {
 
   MyOrderController myOrderController = Get.put(MyOrderController());
+  DashBoardController dashBoardController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +30,13 @@ class MyOrderScreen extends StatelessWidget {
             child:  Column(
               children: [
                 Padding(
-                  padding:  EdgeInsets.only(right: 15.0,top: 30),
+                  padding:  EdgeInsets.only(right: 15.0,top: 10),
                   child: Align(
                     alignment: Alignment.topRight,
                     child: InkWell(
                       onTap: () {
-                        Get.to(() => HomeScreen());
+                        Navigator.pop(context);
+                        // Get.to(() => HomeScreen());
                       },
                       child: Text(
                         "Back",
@@ -53,7 +57,7 @@ class MyOrderScreen extends StatelessWidget {
                     SizedBox(width: Get.width / 78.54,),
                     Container(
                       height: Get.height / 12.03,
-                      width: Get.width / 1.57,
+                      width: Get.width / 1.40,
                       child: TextField(
                         obscureText: true,
                         keyboardType: TextInputType.visiblePassword,
@@ -73,9 +77,7 @@ class MyOrderScreen extends StatelessWidget {
                           ),
                           hintText: "Search Product",
                           hintStyle: TextStyle(
-                              color: gray,
-                              fontFamily: "SegoeRegular",
-                              fontSize: 16),
+                              color: gray, fontFamily: "SegoeRegular", fontSize: 16),
                           enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(50),
                               borderSide: BorderSide(color: appColor)),
@@ -93,18 +95,28 @@ class MyOrderScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: Get.width / 9.82,),
+                    SizedBox(
+                      width:Get.width/17.85,
+                    ),
                     Padding(
                       padding:  EdgeInsets.only(bottom: 15.0),
-                      child: SvgPicture.asset(favourite_icon, color: appColor,
-                        height: Get.height / 24.61,
-                        width: Get.width / 13.09,),
+                      child: InkWell(
+                        onTap: (){
+                          dashBoardController.tabIndex.value=1;
+                          Navigator.of(context,rootNavigator: true).pushReplacement(MaterialPageRoute(builder: (context) => DashboardScreen()));
+                        },
+                        child: SvgPicture.asset(favourite_icon, color: appColor,
+                          height: 26,
+                          width: 26),
+                      ),
                     ),
-                    SizedBox(width: Get.width / 39.27,),
+                    SizedBox(
+                      width: Get.width / 39.27,
+                    ),
                     Padding(
                       padding:  EdgeInsets.only(bottom: 13.0),
-                      child: SvgPicture.asset(notification, height: Get.height / 21.09,
-                        width: Get.width / 11.22,),
+                      child: SvgPicture.asset(notification, height: 32,
+                        width: 32,),
                     )
                   ],
                 ),
@@ -113,6 +125,8 @@ class MyOrderScreen extends StatelessWidget {
                   child: TabBar(
                     controller: myOrderController.controller,
                     labelColor: white,
+                    indicatorPadding: EdgeInsets.all(7),
+                    labelPadding: EdgeInsets.only(top: 5),
                     unselectedLabelColor: blackLight,
                     labelStyle: TextStyle(
                         color: white,
@@ -135,7 +149,7 @@ class MyOrderScreen extends StatelessWidget {
             ),
           ),
           Padding(
-            padding:  EdgeInsets.only(top: 200),
+            padding:  EdgeInsets.only(top: 180),
             child: Container(
               height: 550,
               width: Get.width,

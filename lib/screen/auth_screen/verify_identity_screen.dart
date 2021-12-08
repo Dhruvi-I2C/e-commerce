@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/controller/dashboard_controller.dart';
 import 'package:e_commerce_app/screen/dashboard/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +8,7 @@ import 'package:e_commerce_app/screen/utills/images.dart';
 import 'package:flutter_svg/svg.dart';
 
 class VerifyIdentity extends StatelessWidget {
+  DashBoardController dashBoardController = Get.put(DashBoardController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +101,9 @@ class VerifyIdentity extends StatelessWidget {
                       height: Get.height / 14.76,
                       minWidth: Get.width / 1.31,
                       onPressed: () {
-                        Get.off(()=>DashboardScreen());
+                        // Get.off(DashboardScreen());
+                        dashBoardController.tabIndex.value=0;
+                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DashboardScreen(),));
                         print("Sign IN");
                         // Get.to(VerifyIdentity());
                       },
